@@ -1,0 +1,46 @@
+{
+  "short_name": "Auto Form",
+  "name": "Auto Form",
+  "version": "1.1",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "app/background.js"
+  },
+  "icons": {
+    "16": "images/icons/tray_16.png",
+    "128": "images/icons/tray_128.png"
+  },
+  "action": {},
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["/css/root.css"],
+      "js": ["/static/js/content.js"]
+    },
+    {
+      "js": ["/static/js/greenhouse.js"],
+      "matches": [
+        "https://boards.greenhouse.io/*"
+      ]
+    },
+    {
+      "js": ["/static/js/zipRecruiter.js"],
+      "matches": [
+        "https://www.ziprecruiter.com/jobs/*"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["/static/css/content.css", "/static/media/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "scripting",
+    "storage",
+    "unlimitedStorage"
+  ]
+}
